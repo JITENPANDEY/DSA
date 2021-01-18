@@ -1,27 +1,29 @@
 //time complexity : O(n*m)
 
-class Solution{
-public:
-	void merge(int ar1[], int ar2[], int m, int n) {
-	    // code here
-	    for (int i=n-1; i>=0; i--) 
-    { 
-        /* Find the smallest element greater than ar2[i]. Move all 
-           elements one position ahead till the smallest greater 
-           element is not found */
-        int j, last = ar1[m-1]; 
-        for (j=m-2; j >= 0 && ar1[j] > ar2[i]; j--) 
-            ar1[j+1] = ar1[j]; 
-  
-        // If there was a greater element 
-        if (j != m-2 || last > ar2[i]) 
-        { 
-            ar1[j+1] = ar2[i]; 
-            ar2[i] = last; 
-        } 
-    } 
-	}
-};
+void merge(int X[], int Y[], int m, int n)
+{
+    // consider each element X[i] of array X and ignore the element
+    // if it is already in correct order else swap it with next smaller
+    // element which happens to be first element of Y
+    for (int i = 0; i < m;  i++)
+    {
+        // compare current element of X[] with first element of Y[]
+        if (X[i] > Y[0])
+        {
+            swap(X[i], Y[0]);
+            int first = Y[0];
+ 
+            // move Y[0] to its correct position to maintain sorted
+            // order of Y[]. Note: Y[1..n-1] is already sorted
+            int k;
+            for (k = 1; k < n && Y[k] < first; k++) {
+                Y[k - 1] = Y[k];
+            }
+ 
+            Y[k - 1] = first;
+        }
+    }
+}
 void merge(int arr1[], int n, int arr2[], int m){
 	for(int i=0;i<n;i++)
 	{
