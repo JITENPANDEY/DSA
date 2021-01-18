@@ -23,7 +23,7 @@ public:
 	}
 };
 
-//time complexity: O(n+m)
+//time complexity: O(nlogn)
 int nextGap(int gap)
 {
     if (gap <= 1)
