@@ -22,7 +22,22 @@ public:
     } 
 	}
 };
-
+void merge(int arr1[], int n, int arr2[], int m){
+	for(int i=0;i<n;i++)
+	{
+		int j, first = arr2[0];
+		for(j=1;j<m && arr1[i]>=arr2[j];j++){
+			arr2[j-1]=arr2[j];
+			
+		}
+		
+		// we found the greater element now insert 
+		if(j!=1 || first < arr1[i]){
+		arr2[j-1]=arr1[i];
+		arr1[i]=first;
+		}	
+	}
+}
 //time complexity: O(nlogn)
 int nextGap(int gap)
 {
